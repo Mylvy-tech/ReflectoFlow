@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:16
+    container_name: reflectoflow-db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  # The API service is added with SET-03, once backend/Dockerfile exists.
+  # api:
+  #   build: ./backend
+  #   env_file: .env
+  #   ports:
+  #     - "8080:8080"
+  #   depends_on:
+  #     - db
+
+volumes:
+  db-data:

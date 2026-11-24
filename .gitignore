@@ -1,0 +1,22 @@
+# Secrets
+.env
+*.env.local
+
+# Front end
+node_modules/
+dist/
+coverage/
+*.log
+
+# Back end
+target/
+build/
+.gradle/
+*.class
+
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
