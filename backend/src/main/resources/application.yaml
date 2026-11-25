@@ -1,3 +1,6 @@
+spring:
+  application:
+    name: reflectoflow-backend
 
 server:
   error:
@@ -6,43 +9,23 @@ server:
 logging:
   level:
     root: INFO
-    com.konate: DEBUG
+    com.mylvy.reflectoflow: DEBUG
     org.hibernate.SQL: DEBUG
-    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 ---
-
 spring:
   config:
     activate:
       on-profile: docker
 
-
   datasource:
-    url: jdbc:postgresql://reflecto/order
-    username: user
-    password: pwd
+    url: jdbc:postgresql://localhost:${POSTGRES_PORT:5432}/${POSTGRES_DB:reflectoflow}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
 
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: none
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-
-
-  sql:
-    init:
-      platform: postgresql
-      mode: always
-      schema-locations: classpath:schema.sql
-      data-locations: classpath:data.sql
-
-
-spring.datasource.hikari.initializationFailTimeout: 70000
-
-springdoc:
-  enable-hateoas: false
 ---
 spring:
   config:
@@ -51,12 +34,10 @@ spring:
 
   datasource:
     url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
     username: sa
     password:
 
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: create-drop
     show-sql: false
