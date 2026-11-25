@@ -1,4 +1,4 @@
-package reflectoflow.backend;
+package com.mylvy.reflectoflow;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
