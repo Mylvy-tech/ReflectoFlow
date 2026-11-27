@@ -2,11 +2,19 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '4.2.0'
 	id 'io.spring.dependency-management' version '1.1.7'
+
+    id 'jacoco'
+
 }
 
 group = 'com.mylvy'
 version = '0.0.1-SNAPSHOT'
 description = 'Backend'
+
+jacoco {
+    toolVersion = "0.8.11"
+}
+
 
 java {
     toolchain {
@@ -60,6 +68,9 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     testRuntimeOnly 'com.h2database:h2'
+
+    implementation 'com.clerk:backend-api:6.1.0'
+
 }
 
 tasks.named('test') {
@@ -70,4 +81,38 @@ tasks.named('test') {
 // (same working directory IntelliJ uses when you click the green Run arrow).
 tasks.named('bootRun') {
     workingDir = rootProject.projectDir
+}
+
+
+
+jacocoTestReport {
+    dependsOn test
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+//"com/movielister/**/MovieDetailsServiceApplication.class",
+// "**/*MapperImpl.class"
+            ])
+        }))
+    }
+}
+
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.00
+            }
+        }
+    }
+}
+test.finalizedBy jacocoTestReport
+check.dependsOn jacocoTestCoverageVerification
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
