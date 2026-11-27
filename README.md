@@ -45,44 +45,45 @@ docs/       diagrams and System Document
 - One branch per Jira story: `feature/RFS-24-quote-request`, `fix/RFS-41-token-expiry`.
 - Commit messages start with the story key: `RFS-24 add quote request form`.
 
-Definition of Ready (DoR)
+## Definition of Ready (DoR)
 
 A ticket can go into a sprint only when all of these are true.
 
-User story
-The title starts with the story number and says what the actor does (for example, "US-10: Visitor submits a quote request without an account").
-The story is written as "As a [Visitor / Client / Owner / Subcontractor], I want … so that …", using the names from our ubiquitous language.
-The acceptance criteria are numbered and written as Given / When / Then with "I".
-The story is linked to its epic.
-It has a priority and a rank in the product backlog.
-It has an original estimate in hours, and the story fits in one sprint. A bigger story is split by behaviour, never by layer.
-Its dependencies are linked in Jira ("blocks" / "is blocked by"), and every blocker is done or planned to finish before this story starts.
-It is feasible: we have the time, the skills and the money it needs (including any third-party service).
-Every team member understands the story and its acceptance criteria and agrees with the estimate.
-Bug
-The title starts with "Bug:" and the ticket type is Bug.
-A description of the problem: what happened and what should have happened.
-Steps to reproduce.
-The environment: deployed site or local development, the browser, and the portal or page (Visitor, Client, Owner or Subcontractor).
-A screenshot, and the logs if there are any.
-A priority and an estimate in hours.
-Definition of Done (DoD)
+## User story
+1. The title starts with the story number and says what the actor does (for example, "US-10: Visitor submits a quote request without an account").
+2. The story is written as "As a [Visitor / Client / Owner / Subcontractor], I want … so that …", using the names from our ubiquitous language.
+3. The acceptance criteria are numbered and written as Given / When / Then with "I".
+4. The story is linked to its epic.
+5. It has a priority and a rank in the product backlog.
+6. It has an original estimate in hours, and the story fits in one sprint. A bigger story is split by behaviour, never by layer.
+7. Its dependencies are linked in Jira ("blocks" / "is blocked by"), and every blocker is done or planned to finish before this story starts.
+8. It is feasible: we have the time, the skills and the money it needs (including any third-party service).
+9. Every team member understands the story and its acceptance criteria and agrees with the estimate.
 
+## Bug
+1. The title starts with "Bug:" and the ticket type is Bug.
+2. A description of the problem: what happened and what should have happened.
+3. Steps to reproduce.
+4. The environment: deployed site or local development, the browser, and the portal or page (Visitor, Client, Owner or Subcontractor).
+5. A screenshot, and the logs if there are any.
+6. A priority and an estimate in hours.
+
+
+## Definition of Done (DoD)
 A story is done only when all of these are true.
-
-All of its acceptance criteria pass.
-The code is merged into main through a pull request approved by 2 teammates, with all review conversations resolved.
-Frontend CI and Backend CI are green.
-Every new service method has unit tests, written or checked by the developer. Each test must fail if the behaviour breaks.
-The story's main scenario is covered by an end-to-end test.
-Every page works in French and English.
-Every page works on mobile (390 px) and desktop (1440 px).
-Accessibility: every field has a label, everything can be used with the keyboard, and text contrast is at least 4.5:1.
-The API checks the user's role and checks that the record belongs to that user.
-Emails are sent in the Client's language. A failed email is logged and does not cancel the action.
-There are no secrets in the code. Keys and passwords live in environment variables or GitHub secrets.
-The story is deployed and checked in the deployment environment.
-The Product Owner checked the story against its acceptance criteria and accepted it.
+1. All of its acceptance criteria pass.
+2. The code is merged into main through a pull request approved by 2 teammates, with all review conversations resolved.
+3. Frontend CI and Backend CI are green.
+4. Every new service method has unit tests, written or checked by the developer. Each test must fail if the behaviour breaks.
+5. The story's main scenario is covered by an end-to-end test.
+6. Every page works in French and English.
+7. Every page works on mobile (390 px) and desktop (1440 px).
+8. Accessibility: every field has a label, everything can be used with the keyboard, and text contrast is at least 4.5:1.
+9. The API checks the user's role and checks that the record belongs to that user.
+10. Emails are sent in the Client's language. A failed email is logged and does not cancel the action.
+11. There are no secrets in the code. Keys and passwords live in environment variables or GitHub secrets.
+12. The story is deployed and checked in the deployment environment.
+13. The Product Owner checked the story against its acceptance criteria and accepted it.
 
 ## Team — Mylvy Tech
 
