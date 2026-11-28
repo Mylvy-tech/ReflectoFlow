@@ -2,13 +2,26 @@ spring:
   application:
     name: reflectoflow-backend
 
+logging:
+  level:
+    root: INFO
+---
+# Local development only. Activate with: SPRING_PROFILES_ACTIVE=dev
+# (IntelliJ: Run configuration > Active profiles: dev)
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  jpa:
+    show-sql: true
+
 server:
   error:
     include-message: always
 
 logging:
   level:
-    root: INFO
     com.mylvy.reflectoflow: DEBUG
     org.hibernate.SQL: DEBUG
 ---
@@ -23,7 +36,6 @@ spring:
     password: ${POSTGRES_PASSWORD}
 
   jpa:
-    show-sql: true
     hibernate:
       ddl-auto: none
 ---
@@ -41,6 +53,10 @@ spring:
     hibernate:
       ddl-auto: create-drop
     show-sql: false
+
+  # Tests use H2 with create-drop, so the Postgres migrations must not run
+  flyway:
+    enabled: false
 
   sql:
     init:
