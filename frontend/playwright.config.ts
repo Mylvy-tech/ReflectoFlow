@@ -6,7 +6,7 @@ const port = 4174
 const baseURL = `http://${host}:${port}`
 
 export default defineConfig({
-  testDir: './e2e',
+  testDir: './tests',
   fullyParallel: true,
   forbidOnly: isCI,
   retries: isCI ? 2 : 0,

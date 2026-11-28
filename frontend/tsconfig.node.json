@@ -6,7 +6,7 @@
     "vitest.config.*",
     "cypress.config.*",
     "playwright.config.*",
-    "e2e/**/*.ts",
+    "tests/**/*.ts",
     "eslint.config.*"
   ],
   "compilerOptions": {

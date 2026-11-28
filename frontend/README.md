@@ -58,8 +58,12 @@ npm run test:e2e
 ```
 
 On Linux, add `--with-deps` to the browser install command to install system packages.
-Playwright starts Vite on `127.0.0.1:4174` and runs the tests in `e2e/` on desktop Chromium and emulated Mobile Safari (WebKit).
+Playwright starts Vite on `127.0.0.1:4174` and runs the tests in `tests/` on desktop Chromium and emulated Mobile Safari (WebKit).
 The starter tests cover the frontend's public routes and require no backend or credentials.
+
+Each portal under `tests/portals/` keeps its use-case specs, fixtures, and page objects together.
+The Visitor portal covers the current public routes. The Client, Subcontractor, and Owner directories are ready for test cases as those screens are built.
+Place reusable test data and utilities in `tests/shared/data/` and `tests/shared/utils/`.
 
 Run `npm run test:e2e -- --ui` to debug interactively or `npx playwright show-report` to open the HTML report.
 GitHub Actions runs the suite on pull requests targeting `main` and pushes to `main`. The run page includes the `playwright-report` artifact, including when tests fail.
