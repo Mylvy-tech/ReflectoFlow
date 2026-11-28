@@ -11,7 +11,11 @@ export default defineConfig({
   forbidOnly: isCI,
   retries: isCI ? 2 : 0,
   workers: isCI ? 1 : undefined,
-  reporter: [['list'], ['html', { open: 'never' }]],
+  reporter: [
+    ['list'],
+    ['html', { open: 'never' }],
+    ['./tests/shared/reporters/text-reporter.ts'],
+  ],
   use: {
     baseURL,
     screenshot: 'only-on-failure',

@@ -38,3 +38,11 @@ jobs:
           name: playwright-report
           path: frontend/playwright-report/
           retention-days: 30
+      - name: Upload Playwright text report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-text-report
+          path: frontend/test-reports/test-report-*.txt
+          if-no-files-found: error
+          retention-days: 30
