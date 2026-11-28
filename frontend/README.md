@@ -47,6 +47,31 @@ npm run build
 npm run test:unit
 ```
 
+### Run browser tests with [Playwright](https://playwright.dev/)
+
+From `frontend/`, install the dependencies and browsers, then run the suite.
+
+```sh
+npm ci
+npx playwright install chromium webkit
+npm run test:e2e
+```
+
+On Linux, add `--with-deps` to the browser install command to install system packages.
+Playwright starts Vite on `127.0.0.1:4174` and runs the tests in `tests/` on desktop Chromium and emulated Mobile Safari (WebKit).
+The starter tests cover the frontend's public routes and require no backend or credentials.
+
+Each portal under `tests/portals/` keeps its use-case specs, fixtures, and page objects together.
+The Visitor portal covers the current public routes. The Client, Subcontractor, and Owner directories are ready for test cases as those screens are built.
+Place reusable test data and utilities in `tests/shared/data/` and `tests/shared/utils/`.
+
+Each `npm run test:e2e` run writes a timestamped `test-report-*.txt` file in `test-reports/`.
+The text report groups results by use-case folder and shows the browser, duration, and totals.
+Run `npx playwright show-report` to open the HTML report or `npm run test:e2e -- --ui` to debug interactively.
+
+GitHub Actions runs the suite on pull requests targeting `main` and pushes to `main`.
+Download the `playwright-text-report` and `playwright-report` artifacts from the run page for the text and HTML reports, including when tests fail.
+
 ### Lint with [ESLint](https://eslint.org/)
 
 ```sh
